@@ -6677,7 +6677,7 @@
   }
   window.addEventListener('DOMContentLoaded', () => setTimeout(() => {
     if (aaIsLoggedOutLoad) return;
-    if (!localStorage.getItem('aa_disclosed')) return; // gate still up -- agreeDisclosure() starts the tour once it closes
+    if (!sessionStorage.getItem('aa_disclosed')) return; // gate still up -- agreeDisclosure() starts the tour once it closes
     aaMaybeStartTutorial();
   }, 500));
 </script>
