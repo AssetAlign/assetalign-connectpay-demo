@@ -76,8 +76,8 @@ const AA_PERSISTENT_SESSION_KEY = 'aa_persistent_session';
 function aaIsPersistentMode() {
   try {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('alex') === '1') localStorage.setItem(AA_PERSISTENT_MODE_KEY, '1');
-    return localStorage.getItem(AA_PERSISTENT_MODE_KEY) === '1';
+    // ConnectPay demo: URL-only, never the shared-origin localStorage flag.
+    return params.get('alex') === '1';
   } catch (e) { return false; }
 }
 
