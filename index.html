@@ -67,7 +67,7 @@ footer{max-width:880px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:#8
   var p = new URLSearchParams(q); p.delete('play'); var qs = p.toString();
   if (qs) document.getElementById('startBtn').href = 'onboarding-replica/?' + qs;
   var v = document.getElementById("vid"), wrap = v.parentNode, big = document.getElementById("bigPlay");
-  function start(){ wrap.classList.add("playing"); v.controls = true; v.play().catch(function(){ wrap.classList.remove("playing"); }); }
+  function start(){ wrap.classList.add("playing"); v.controls = true; v.play().catch(function(){ wrap.classList.remove("playing"); v.controls = false; }); }
   big.addEventListener("click", start);
   v.addEventListener("play", function(){ wrap.classList.add("playing"); v.controls = true; });
   // Arriving from the email play button: try to start right away (browsers may require one more tap for sound).
