@@ -6336,6 +6336,10 @@
   // gate it's always had.
   function finishMainTour() {
     endTutorial(false);
+    // ConnectPay demo, per Alex 2026-10-15: after the tour, keep going straight
+    // into the car-insurance check (startNudgeIntro) for members who booked an
+    // advisor. Off-ramp members still get the advisor-intro modal instead.
+    if (!aaLoadSession().advisor_skipped) { setTimeout(startNudgeIntro, 900); return; }
     setTimeout(showAdvisorIntroModal, 1200);
     // SKUNKWORKS V3 -- 2026-09-17, per Alex: "the have 2 minutes should
     // come at the end of the dashboard intro." Mirrors showAdvisorIntroModal
@@ -6391,8 +6395,8 @@
     }
     if (!auto) {
       return {
-        title: "You're live!",
-        body: "Let's start with something easy — see if you're paying too much for car insurance.",
+        title: "Let's keep going.",
+        body: "Start with something easy: see if you're paying too much for car insurance, and earn 10 Align Credits.",
         ctaText: "Let's check →",
         ctaAction: beginNudgeFromIntro,
         targetId: 'nudgeCard'
