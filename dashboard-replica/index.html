@@ -2134,8 +2134,8 @@
       <div class="advisor-intro-body" id="advisorBookedMsg">You'll get an email from your advisor shortly to confirm your session. In the meantime, let's get everything in one place so your first meeting is a productive one.</div>
     </div>
     <div class="advisor-intro-footer">
-      <button class="btn-disclose-agree" onclick="prepareForMeeting()">Get everything in one place →</button>
-      <button class="advisor-intro-dismiss" onclick="declinePrepareNow()">I don't have time right now</button>
+      <button class="btn-disclose-agree" onclick="startTourFromBooked()">Show me around →</button>
+      <button class="advisor-intro-dismiss" onclick="document.getElementById('advisorBookedModal').classList.remove('show')">I'll look around on my own</button>
     </div>
   </div>
 </div>
@@ -3611,11 +3611,11 @@
       // instead of following it. Defer to finishMainTour() in that case
       // -- same "close tour, short pause, real follow-up modal" pattern
       // finishMainTour() already uses for showAdvisorIntroModal() below.
-      if (session.tutorialSeen) {
-        showAdvisorBookedModal(session.advisor_name);
-      } else {
-        pendingAdvisorBookedModal = true;
-      }
+      // ConnectPay demo, per Alex 2026-10-15: congrats first, THEN the tour.
+      // The modal shows right away and its main button launches the tour
+      // (startTourFromBooked); the timed auto-start is held off meanwhile.
+      window.aaBookedFirst = true;
+      showAdvisorBookedModal(session.advisor_name);
     }
 
     // Prefill Zebra's "state" field from onboarding's handoff param
@@ -5393,7 +5393,7 @@
   // #advisorBookedModal's own dev note in the HTML for why this exists. ──
   function showAdvisorBookedModal(advisorName) {
     const msg = document.getElementById('advisorBookedMsg');
-    if (msg) msg.textContent = "You'll get an email from " + (advisorName || 'your advisor') + " shortly to confirm your session. In the meantime, let's get everything in one place so your first meeting is a productive one. It takes about 2 minutes.";
+    if (msg) msg.textContent = "You'll get an email from " + (advisorName || 'your advisor') + " shortly to confirm your session. In the meantime, here's a quick look around your new dashboard.";
     const modal = document.getElementById('advisorBookedModal');
     if (modal) modal.classList.add('show');
   }
@@ -6668,8 +6668,23 @@
   // be triggered from the right moment instead of a blind timer: skip
   // entirely while the gate is still up, and agreeDisclosure() (shared.js)
   // now calls this itself right after the gate closes.
+  // ConnectPay demo: launched from the "You're all set" modal's main button.
+  // That modal already names the advisor, so the welcome card drops its
+  // own "look for a meeting invite" line and its CTA isn't a second
+  // "Show me around".
+  function startTourFromBooked() {
+    document.getElementById('advisorBookedModal').classList.remove('show');
+    window.aaBookedFirst = false;
+    aaSaveSession({ tutorialSeen: true });
+    tutSteps[0].body = tutSteps[0].bodyAdvisorSkipped;
+    tutSteps[0].bodyMobile = tutSteps[0].bodyMobileAdvisorSkipped;
+    tutSteps[0].cta = "Let's go →";
+    setTimeout(function () { showTutStep(0); }, 300);
+  }
+  window.startTourFromBooked = startTourFromBooked;
   function aaMaybeStartTutorial() {
     if (aaIsLoggedOutLoad) return;
+    if (window.aaBookedFirst) return;
     const session = aaLoadSession();
     if (session.tutorialSeen) return;
     aaSaveSession({ tutorialSeen: true });
