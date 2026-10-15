@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlyAlliance + AssetAlign</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1F33;--navy2:#1a3a5c;--gold:#F5A623;--copper:#C9843A;--ink:#1a1a1a;--muted:#5b6b7c;--bg:#f6f4ef}
+*{box-sizing:border-box;margin:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+header{background:var(--navy);padding:18px 16px}
+.hwrap{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.hwrap img.fa{height:30px}.hwrap img.aa{height:30px}.hwrap .x{color:#7f93a8}
+main{max-width:880px;margin:0 auto;padding:40px 16px 64px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:700}
+h1{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,44px);line-height:1.12;color:var(--navy);margin:10px 0 14px}
+.lead{font-size:17px;color:var(--muted);max-width:640px;line-height:1.55}
+.player{margin:28px 0 8px;border-radius:16px;overflow:hidden;background:var(--navy);box-shadow:0 18px 40px rgba(13,31,51,.18);aspect-ratio:16/9;position:relative}
+.player video{width:100%;height:100%;display:block;background:#000}
+.player .fallback{position:absolute;inset:0;display:none;cursor:pointer}
+.player .fallback img{width:100%;height:100%;object-fit:cover}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px}
+.btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;text-decoration:none;box-shadow:0 8px 20px rgba(245,166,35,.35)}
+.btn:hover{filter:brightness(1.05)}
+.note{font-size:14px;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.step{background:#fff;border-radius:14px;padding:20px;border:1px solid #e7e2d8}
+.step b{display:block;color:var(--navy);font-size:16px;margin:8px 0 4px}
+.step span{font-size:14px;color:var(--muted);line-height:1.45}
+.num{width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+footer{max-width:880px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:#8a96a3;line-height:1.5}
+@media(max-width:640px){.steps{grid-template-columns:1fr}.hwrap img.fa,.hwrap img.aa{height:24px}}
+</style>
+</head>
+<body>
+<header><div class="hwrap"><img class="fa" src="assets/flyalliance-logo.png" alt="FlyAlliance"><span class="x">+</span><img class="aa" src="assets/aa-logo-dark.png" alt="AssetAlign"></div></header>
+<main>
+  <div class="eyebrow">A new benefit for the FlyAlliance team</div>
+  <h1>Your free financial plan is ready.</h1>
+  <p class="lead">FlyAlliance has made AssetAlign available to every employee. Watch this one-minute video, then take about two minutes to get started.</p>
+
+  <div class="player">
+    <video id="vid" controls playsinline preload="metadata" poster="assets/video-poster.png">
+      <source src="video/assetalign-overview.mp4" type="video/mp4">
+    </video>
+    <a class="fallback" id="fallback" href="https://f.io/KfPiX3Iu" target="_blank" rel="noopener"><img src="assets/video-poster.png" alt="Play the AssetAlign overview video"></a>
+  </div>
+
+  <div class="cta">
+    <a class="btn" id="startBtn" href="onboarding-replica/">Get started &rarr;</a>
+    <span class="note">Completely optional. FlyAlliance never sees your information.</span>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="num">1</div><b>Confirm a few details</b><span>Most of your info is already filled in. It takes about two minutes.</span></div>
+    <div class="step"><div class="num">2</div><b>Get matched</b><span>We pair you with a vetted advisor who fits your goals and stage of life.</span></div>
+    <div class="step"><div class="num">3</div><b>Earn Align Credits</b><span>Get rewarded for smart money moves, like points for your financial life.</span></div>
+  </div>
+</main>
+<footer>Participation is voluntary. AssetAlign is administered by AssetAlign, not by FlyAlliance. Advisory services are provided by independent advisors.</footer>
+<script>
+// Carry any personalization params (first_name, employer_name, etc.) from the email link into onboarding.
+(function(){
+  var q = window.location.search;
+  if (q) document.getElementById('startBtn').href = 'onboarding-replica/' + q;
+  // If the hosted MP4 isn't available, fall back to the poster linking out to the video.
+  var v = document.getElementById('vid');
+  var src = v.querySelector('source');
+  src.addEventListener('error', function(){ v.style.display='none'; document.getElementById('fallback').style.display='block'; });
+})();
+</script>
+</body>
+</html>
