@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>AssetAlign x ConnectPay</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1F33;--navy2:#162B45;--navy3:#1E3A57;--gold:#F5A623;--copper:#C9843A;--copperInk:#9A5F1F;--cream:#F8F5EF;--card:#FFFFFF;--line:#E7E1D4;--ink:#0D1F33;--ink2:#4A5568;--muted:#6B7785}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--cream);color:var(--ink);font-family:'DM Sans',Arial,sans-serif}
+body{min-height:100vh;display:flex;flex-direction:column}
+header{background:var(--navy);color:var(--cream);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+header img{height:40px}
+header .tag{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#BFCBD8}
+main{flex:1;display:grid;grid-template-columns:1fr 1.25fr;gap:22px;padding:22px 32px 18px;max-width:1500px;width:100%;margin:0 auto}
+.col{display:flex;flex-direction:column;gap:22px;min-width:0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;flex:none}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ph h2{font-family:'Playfair Display',Georgia,serif;font-size:24px;line-height:1.15;color:var(--navy)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{border-radius:14px;padding:16px;background:#FBF9F4;border:1px solid var(--line)}
+.opt .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--copperInk)}
+.opt b{display:block;font-size:17px;margin:6px 0 4px;color:var(--navy)}
+.opt p{font-size:14px;line-height:1.45;color:var(--ink2)}
+.opt .lift{margin-top:10px;display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--navy);color:var(--gold)}
+.split{display:flex;gap:10px;margin-top:14px;font-size:14px;color:var(--ink2);line-height:1.45}
+.split div{flex:1;padding:12px 14px;border-radius:12px;background:var(--cream)}
+.split b{color:var(--navy)}
+.gap{display:flex;gap:18px;align-items:center}
+.big{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1;color:var(--navy)}
+.gapbars{flex:1;display:flex;flex-direction:column;gap:10px}
+.gb .lbl{display:flex;justify-content:space-between;font-size:14px;color:var(--ink2);margin-bottom:5px}
+.gb .lbl b{color:var(--navy)}
+.track{height:14px;border-radius:7px;background:#EFEAE0;overflow:hidden}
+.fill{height:100%;border-radius:0 4px 4px 0}
+.gapnote{font-size:14px;color:var(--ink2);line-height:1.45;margin-top:12px}
+.src{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.4}
+/* calculator */
+.calc{display:flex;flex-direction:column;height:100%}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+.inp label{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;color:var(--ink2);margin-bottom:4px}
+.inp label output{font-weight:700;color:var(--navy);font-size:15px}
+input[type=range]{width:100%;accent-color:var(--copper);height:22px}
+.share{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:10px 14px;border-radius:12px;background:var(--cream);font-size:14px;color:var(--ink2)}
+.share b{font-size:16px;color:var(--navy)}
+.results{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;margin-top:16px;align-items:start}
+.hero{background:var(--navy);border-radius:16px;padding:20px 22px;color:var(--cream);display:flex;flex-direction:column;gap:16px}
+.hero .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.hero .big{color:var(--cream);font-size:52px;line-height:1.15;margin:6px 0 8px}
+.hero .sub{font-size:14px;color:#BFCBD8}
+.hero .row{display:flex;justify-content:space-between;font-size:14px;color:#BFCBD8;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
+.hero .row b{color:var(--cream)}
+.chart{display:flex;flex-direction:column}
+.chart .k{font-size:13px;color:var(--ink2);margin-bottom:6px}
+.chart .k b{color:var(--navy)}
+svg text{font-family:'DM Sans',Arial,sans-serif}
+.tip{position:fixed;pointer-events:none;background:var(--navy);color:var(--cream);font-size:13px;padding:8px 10px;border-radius:8px;box-shadow:0 8px 20px rgba(13,31,51,.25);display:none;white-space:nowrap;z-index:5}
+.tip b{color:var(--gold)}
+.assume{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.45}
+@media (max-width:1100px){main{grid-template-columns:1fr}}
+@media (max-width:640px){main{padding:16px}.opts,.inputs,.results{grid-template-columns:1fr}.gap{flex-direction:column;align-items:stretch}header{padding:12px 16px}}
+</style>
+</head>
+<body>
+<header>
+  <img src="../assets/aa-logo-dark.png" alt="AssetAlign">
+  <span class="tag">Partnership at a glance · ConnectPay</span>
+</header>
+<main>
+  <div class="col">
+    <section class="panel">
+      <div class="ph"><span class="num">1</span><h2>Zero lift for ConnectPay</h2></div>
+      <div class="opts">
+        <div class="opt">
+          <span class="k">Option A</span>
+          <b>A link after onboarding</b>
+          <p>Add AssetAlign to your new-hire welcome, or we send the co-branded email you just saw.</p>
+          <span class="lift">No engineering</span>
+        </div>
+        <div class="opt">
+          <span class="k">Option B</span>
+          <b>Embedded in your onboarding</b>
+          <p>AssetAlign appears as a step inside ConnectPay onboarding. A secure census file pre-fills each employee.</p>
+          <span class="lift">We build it, you approve it</span>
+        </div>
+      </div>
+      <div class="split">
+        <div><b>AssetAlign handles</b><br>Advisors and vetting, compliance, member support, reporting.</div>
+        <div><b>ConnectPay handles</b><br>The introduction. That's it.</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="ph"><span class="num">2</span><h2>Why it matters: small businesses are left out</h2></div>
+      <div class="gap">
+        <div class="gapbars">
+          <div class="gb"><div class="lbl"><span>Small-company employees</span><b>32%</b></div><div class="track"><div class="fill" style="width:32%;background:var(--copper)"></div></div></div>
+          <div class="gb"><div class="lbl"><span>Large-company employees</span><b>54%</b></div><div class="track"><div class="fill" style="width:54%;background:var(--navy3)"></div></div></div>
+        </div>
+      </div>
+      <p class="gapnote">Share of employees who say their employer offers financial wellness. Your clients’ teams are the ones without it, and only 23% of employees anywhere have a plan built with an advisor.</p>
+      <p class="src">Sources: Bank of America 2025 Workplace Benefits Report; Gallagher 2026 Workforce Trends, Financial Benchmarks.</p>
+    </section>
+  </div>
+
+  <section class="panel calc">
+    <div class="ph"><span class="num">3</span><h2>What it’s worth to ConnectPay</h2></div>
+    <div class="inputs">
+      <div class="inp"><label for="clients">ConnectPay clients offered <output id="o_clients"></output></label><input id="clients" type="range" min="500" max="15000" step="500" value="10000"></div>
+      <div class="inp"><label for="emp">Employees per client <output id="o_emp"></output></label><input id="emp" type="range" min="3" max="50" step="1" value="10"></div>
+      <div class="inp"><label for="adv">Employees who work with an advisor <output id="o_adv"></output></label><input id="adv" type="range" min="1" max="20" step="0.5" value="5"></div>
+      <div class="inp"><label for="aum">Average assets per advisory client <output id="o_aum"></output></label><input id="aum" type="range" min="25000" max="300000" step="5000" value="75000"></div>
+      <div class="inp"><label for="quote">Employees who request an insurance quote each year <output id="o_quote"></output></label><input id="quote" type="range" min="0" max="30" step="1" value="10"></div>
+      <div class="inp"><label for="growth">Annual asset growth <output id="o_growth"></output></label><input id="growth" type="range" min="0" max="10" step="1" value="6"></div>
+    </div>
+    <div class="share"><span>ConnectPay revenue share of AssetAlign revenue</span><b>15%</b></div>
+
+    <div class="results">
+      <div class="hero">
+        <div>
+          <div class="k">ConnectPay, five-year total</div>
+          <div class="big" id="r_total">$0</div>
+          <div class="sub" id="r_run">$0 a year once fully ramped</div>
+        </div>
+        <div>
+          <div class="row"><span>Employees reached</span><b id="r_emp">0</b></div>
+          <div class="row"><span>Advisory clients</span><b id="r_cli">0</b></div>
+          <div class="row"><span>Assets under advice, year 5</span><b id="r_aum">$0</b></div>
+          <div class="row"><span>AssetAlign revenue, year 5</span><b id="r_aa">$0</b></div>
+        </div>
+      </div>
+      <div class="chart">
+        <div class="k"><b>ConnectPay revenue by year</b></div>
+        <svg id="bars" viewBox="0 0 360 230" role="img" aria-label="ConnectPay revenue by year, years 1 to 5" style="width:100%;height:auto"></svg>
+      </div>
+    </div>
+    <p class="assume">Illustrative. Advisory revenue is AssetAlign’s recurring share of the advisor’s annual fee; quote revenue is the referral fee per car-insurance quote. Adoption ramps to the target over three years (30%, 60%, 100%), and assets grow at the rate set above. Final terms subject to a written agreement.</p>
+  </section>
+</main>
+<div class="tip" id="tip"></div>
+<script>
+(function(){
+  // Internal economics (not shown as percentages on the page).
+  var FEE = 0.01, AA_SHARE_OF_FEE = 0.375, QUOTE_FEE = 30, REV_SHARE = 0.15, RAMP = [0.3, 0.6, 1, 1, 1];
+  var $ = function(id){ return document.getElementById(id); };
+  var money = function(v){
+    if (v >= 1e9) return '$' + (v/1e9).toFixed(2) + 'B';
+    if (v >= 1e6) return '$' + (v/1e6).toFixed(v >= 1e7 ? 1 : 2) + 'M';
+    if (v >= 1e3) return '$' + Math.round(v/1e3).toLocaleString() + 'K';
+    return '$' + Math.round(v).toLocaleString();
+  };
+  var num = function(v){ return Math.round(v).toLocaleString(); };
+  var ids = ['clients','emp','adv','aum','quote','growth'];
+
+  function calc(){
+    var c = +$('clients').value, e = +$('emp').value, adv = +$('adv').value/100, aum = +$('aum').value, q = +$('quote').value/100, g = +$('growth').value/100;
+    $('o_clients').textContent = num(c); $('o_emp').textContent = e; $('o_adv').textContent = (adv*100) + '%';
+    $('o_aum').textContent = money(aum); $('o_quote').textContent = Math.round(q*100) + '%'; $('o_growth').textContent = Math.round(g*100) + '%';
+    var employees = c * e, clients = employees * adv;
+    var years = [], total = 0, aum5 = 0, aa5 = 0;
+    for (var y = 0; y < 5; y++){
+      var assets = clients * RAMP[y] * aum * Math.pow(1 + g, y);
+      var aaAdvisory = assets * FEE * AA_SHARE_OF_FEE;
+      var aaQuotes = employees * q * RAMP[y] * QUOTE_FEE;
+      var cp = (aaAdvisory + aaQuotes) * REV_SHARE;
+      years.push({ y: y + 1, cp: cp, adv: aaAdvisory * REV_SHARE, quotes: aaQuotes * REV_SHARE });
+      total += cp;
+      if (y === 4){ aum5 = assets; aa5 = aaAdvisory + aaQuotes; }
+    }
+    var run = (clients * aum * FEE * AA_SHARE_OF_FEE + employees * q * QUOTE_FEE) * REV_SHARE;
+    $('r_total').textContent = money(total);
+    $('r_run').textContent = money(run) + ' a year once fully ramped, growing with assets';
+    $('r_emp').textContent = num(employees); $('r_cli').textContent = num(clients);
+    $('r_aum').textContent = money(aum5); $('r_aa').textContent = money(aa5);
+    draw(years);
+  }
+
+  function draw(years){
+    var svg = $('bars'), W = 360, H = 230, L = 46, R = 8, T = 14, B = 26;
+    var max = Math.max.apply(null, years.map(function(d){ return d.cp; })) || 1;
+    var step = niceStep(max), top = Math.ceil(max / step) * step;
+    var pw = W - L - R, ph = H - T - B, bw = pw / years.length;
+    var out = '';
+    for (var t = 0; t <= top + 1e-9; t += step){
+      var yy = T + ph - (t / top) * ph;
+      out += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'" stroke="#E7E1D4" stroke-width="1"/>';
+      out += '<text x="'+(L-6)+'" y="'+(yy+4)+'" text-anchor="end" font-size="11" fill="#6B7785">'+money(t)+'</text>';
+    }
+    years.forEach(function(d, i){
+      var h = (d.cp / top) * ph, x = L + i*bw + bw*0.2, w = bw*0.6, y = T + ph - h, r = Math.min(4, h);
+      var path = 'M'+x+','+(T+ph)+' V'+(y+r)+' Q'+x+','+y+' '+(x+r)+','+y+' H'+(x+w-r)+' Q'+(x+w)+','+y+' '+(x+w)+','+(y+r)+' V'+(T+ph)+' Z';
+      out += '<path d="'+path+'" fill="'+(i===4?'#C9843A':'#1E3A57')+'"/>';
+      out += '<rect class="hit" data-i="'+i+'" x="'+(L+i*bw)+'" y="'+T+'" width="'+bw+'" height="'+ph+'" fill="transparent"/>';
+      out += '<text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" fill="#4A5568">Year '+d.y+'</text>';
+      if (i === 4) out += '<text x="'+(x+w/2)+'" y="'+(y-6)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#0D1F33">'+money(d.cp)+'</text>';
+    });
+    out += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+(T+ph)+'" y2="'+(T+ph)+'" stroke="#B9B1A1" stroke-width="1"/>';
+    svg.innerHTML = out;
+    var tip = $('tip');
+    svg.querySelectorAll('.hit').forEach(function(el){
+      el.addEventListener('mousemove', function(ev){
+        var d = years[+el.getAttribute('data-i')];
+        tip.innerHTML = 'Year '+d.y+': <b>'+money(d.cp)+'</b><br>Advisory '+money(d.adv)+' · Quotes '+money(d.quotes);
+        tip.style.display = 'block'; tip.style.left = (ev.clientX + 14) + 'px'; tip.style.top = (ev.clientY - 10) + 'px';
+      });
+      el.addEventListener('mouseleave', function(){ tip.style.display = 'none'; });
+    });
+  }
+  function niceStep(max){
+    var raw = max / 4, p = Math.pow(10, Math.floor(Math.log10(raw))), n = raw / p;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p;
+  }
+  ids.forEach(function(id){ $(id).addEventListener('input', calc); });
+  calc();
+})();
+</script>
+</body>
+</html>
