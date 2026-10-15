@@ -4114,6 +4114,13 @@
   }
 
   const ACCOUNT_CATEGORIES = [
+    // ConnectPay demo, per Alex 2026-10-15: payroll provider section.
+    { key: 'payroll', label: 'Payroll & Pay Stubs', tileLabel: 'My Paycheck', icon: '💵', items: [
+      { name: 'ConnectPay', domain: 'connectpayusa.com' }, { name: 'ADP', domain: 'adp.com' },
+      { name: 'Paychex', domain: 'paychex.com' }, { name: 'Gusto', domain: 'gusto.com' },
+      { name: 'Paylocity', domain: 'paylocity.com' }, { name: 'Paycom', domain: 'paycom.com' },
+      { name: 'Rippling', domain: 'rippling.com' }, { name: 'QuickBooks Payroll', domain: 'quickbooks.intuit.com' },
+    ] },
     { key: 'bank', label: 'Banks', tileLabel: 'My Bank', icon: '🏦', items: [
       { name: 'Chase', domain: 'chase.com' }, { name: 'Bank of America', domain: 'bankofamerica.com' },
       { name: 'Wells Fargo', domain: 'wellsfargo.com' }, { name: 'Citibank', domain: 'citi.com' },
