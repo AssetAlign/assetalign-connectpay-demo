@@ -18,8 +18,9 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,44px);line-heig
 .lead{font-size:17px;color:var(--muted);max-width:640px;line-height:1.55}
 .player{margin:28px 0 8px;border-radius:16px;overflow:hidden;background:var(--navy);box-shadow:0 18px 40px rgba(13,31,51,.18);aspect-ratio:16/9;position:relative}
 .player video{width:100%;height:100%;display:block;background:#000}
-.player .fallback{position:absolute;inset:0;display:none;cursor:pointer}
-.player .fallback img{width:100%;height:100%;object-fit:cover}
+.player .big{position:absolute;left:50%;top:77%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;border:0;background:rgba(245,166,35,.96);box-shadow:0 0 0 12px rgba(245,166,35,.22),0 14px 34px rgba(0,0,0,.5);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.player .big:after{content:"";border-left:32px solid #0D1F33;border-top:19px solid transparent;border-bottom:19px solid transparent;margin-left:9px}
+.player.playing .big{display:none}
 .cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px}
 .btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;text-decoration:none;box-shadow:0 8px 20px rgba(245,166,35,.35)}
 .btn:hover{filter:brightness(1.05)}
@@ -41,10 +42,10 @@ footer{max-width:880px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:#8
   <p class="lead">FlyAlliance has made AssetAlign available to every employee. Watch this one-minute video, then take about two minutes to get started.</p>
 
   <div class="player">
-    <video id="vid" controls playsinline preload="metadata" poster="assets/video-poster.png">
+    <video id="vid" playsinline preload="auto" poster="assets/video-poster.png">
       <source src="video/assetalign-overview.mp4" type="video/mp4">
     </video>
-    <a class="fallback" id="fallback" href="https://f.io/KfPiX3Iu" target="_blank" rel="noopener"><img src="assets/video-poster.png" alt="Play the AssetAlign overview video"></a>
+    <button class="big" id="bigPlay" aria-label="Play the AssetAlign overview video"></button>
   </div>
 
   <div class="cta">
@@ -63,11 +64,14 @@ footer{max-width:880px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:#8
 // Carry any personalization params (first_name, employer_name, etc.) from the email link into onboarding.
 (function(){
   var q = window.location.search;
-  if (q) document.getElementById('startBtn').href = 'onboarding-replica/' + q;
-  // If the hosted MP4 isn't available, fall back to the poster linking out to the video.
-  var v = document.getElementById('vid');
-  var src = v.querySelector('source');
-  src.addEventListener('error', function(){ v.style.display='none'; document.getElementById('fallback').style.display='block'; });
+  var p = new URLSearchParams(q); p.delete('play'); var qs = p.toString();
+  if (qs) document.getElementById('startBtn').href = 'onboarding-replica/?' + qs;
+  var v = document.getElementById("vid"), wrap = v.parentNode, big = document.getElementById("bigPlay");
+  function start(){ wrap.classList.add("playing"); v.controls = true; v.play().catch(function(){ wrap.classList.remove("playing"); }); }
+  big.addEventListener("click", start);
+  v.addEventListener("play", function(){ wrap.classList.add("playing"); v.controls = true; });
+  // Arriving from the email play button: try to start right away (browsers may require one more tap for sound).
+  if (new URLSearchParams(location.search).get("play") === "1") { wrap.scrollIntoView({block:"center"}); start(); }
 })();
 </script>
 </body>
