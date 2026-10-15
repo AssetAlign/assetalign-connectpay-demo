@@ -62,8 +62,9 @@
 function aaIsPersistentMode(){
   try{
     var p=new URLSearchParams(window.location.search);
-    if(p.get('alex')==='1'){localStorage.setItem('aa_persistent_mode','1');}
-    return localStorage.getItem('aa_persistent_mode')==='1';
+    // ConnectPay demo: persistent mode ONLY when this page's own URL says ?alex=1. Never read the shared
+    // assetalign.github.io localStorage flag, so leftover test sessions can't skip the demo to the dashboard.
+    return p.get('alex')==='1';
   }catch(e){return false;}
 }
 // Called eagerly, not just from inside buildBaseHandoffParams() at the very
@@ -2406,7 +2407,7 @@ function resetNetworkCheck(){
 // the actual engagement moment, so browsing/matching stays friction-free.
 let pendingScheduleAdvisor = null;
 function goToSchedule(advisor){
-  if(!localStorage.getItem('aa_disclosed')){
+  if(!sessionStorage.getItem('aa_disclosed')){
     pendingScheduleAdvisor = advisor;
     obShowDisclosureGate();
     return;
@@ -2434,7 +2435,7 @@ function obShowDisclosureGate(){
   if(modal) modal.classList.add('show');
 }
 function obAgreeDisclosure(){
-  localStorage.setItem('aa_disclosed', '1');
+  sessionStorage.setItem('aa_disclosed', '1');
   const modal = document.getElementById('obDisclosureModal');
   if(modal) modal.classList.remove('show');
   if(pendingScheduleAdvisor){
