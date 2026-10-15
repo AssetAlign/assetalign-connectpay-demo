@@ -164,7 +164,7 @@ function aaStartOverFresh() {
     localStorage.removeItem('aa_saved_accounts');
     localStorage.removeItem('aa_tile_order');
     localStorage.removeItem('aa_account_na');
-    localStorage.removeItem('aa_disclosed');
+    sessionStorage.removeItem('aa_disclosed');
   } catch (e) {}
   const base = aaIsPersistentMode() ? '../onboarding-replica/?alex=1' : '../onboarding-replica/';
   window.location.href = base + (base.indexOf('?') === -1 ? '?' : '&') + 't=' + Date.now();
@@ -657,7 +657,7 @@ function resetDisclosureScrollGate() {
   toggleAgreeBtn();
 }
 function agreeDisclosure() {
-  localStorage.setItem('aa_disclosed', '1');
+  sessionStorage.setItem('aa_disclosed', '1');
   const modal = document.getElementById('disclosureModal');
   if (modal) modal.classList.remove('show');
   aaUnlockBodyScroll();
@@ -686,7 +686,7 @@ function goBackToDisclosure() {
   resetDisclosureScrollGate();
 }
 function aaShowDisclosureIfNeeded() {
-  if (!localStorage.getItem('aa_disclosed')) {
+  if (!sessionStorage.getItem('aa_disclosed')) {
     const modal = document.getElementById('disclosureModal');
     if (modal) modal.classList.add('show');
     aaLockBodyScroll();
