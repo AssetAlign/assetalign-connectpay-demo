@@ -46,6 +46,9 @@ main{flex:1;display:grid;grid-template-columns:1fr 1.25fr;gap:22px;padding:22px 
 input[type=range]{width:100%;accent-color:var(--copper);height:22px}
 .avg{margin-top:4px;font:600 12px 'DM Sans',Arial,sans-serif;color:var(--copperInk);background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer}
 .avg:hover{border-color:var(--copper)}
+.chk{justify-content:flex-start !important;gap:8px;font-weight:700;color:var(--navy) !important;cursor:pointer;margin-bottom:6px !important}
+.chk input{width:16px;height:16px;accent-color:var(--copper)}
+.mort.off label[for=mort],.mort.off input[type=range]{opacity:.35}
 .share{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:10px 14px;border-radius:12px;background:var(--cream);font-size:14px;color:var(--ink2)}
 .share b{font-size:16px;color:var(--navy)}
 .results{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;margin-top:16px;align-items:start}
@@ -115,6 +118,7 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
       <div class="inp"><label for="adv">Employees who work with an advisor <output id="o_adv"></output></label><input id="adv" type="range" min="1" max="40" step="0.5" value="29"><button type="button" class="avg" id="advAvg">Our average: 29%</button></div>
       <div class="inp"><label for="aum">Average assets per advisory client <output id="o_aum"></output></label><input id="aum" type="range" min="25000" max="300000" step="5000" value="75000"></div>
       <div class="inp"><label for="quote">Employees who request an insurance quote each year <output id="o_quote"></output></label><input id="quote" type="range" min="0" max="30" step="1" value="10"></div>
+      <div class="inp mort"><label class="chk"><input type="checkbox" id="mortOn"> Include mortgage referrals</label><label for="mort">Users who get a mortgage each year <output id="o_mort"></output></label><input id="mort" type="range" min="1" max="10" step="0.5" value="5"></div>
       <div class="inp"><label for="growth">Annual asset growth <output id="o_growth"></output></label><input id="growth" type="range" min="0" max="10" step="1" value="6"></div>
     </div>
     <div class="share"><span>ConnectPay revenue share</span><b>15%</b></div>
@@ -129,7 +133,7 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
         <div>
           <div class="row"><span>Employees reached</span><b id="r_emp">0</b></div>
           <div class="row"><span>Advisory clients</span><b id="r_cli">0</b></div>
-          <div class="row"><span>Assets under advice, year 5</span><b id="r_aum">$0</b></div>
+          <div class="row" id="mortRow" style="display:none"><span>Mortgages per year</span><b id="r_mort">0</b></div>
         </div>
       </div>
       <div class="chart">
@@ -137,14 +141,14 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
         <svg id="bars" viewBox="0 0 360 230" role="img" aria-label="ConnectPay revenue by year, years 1 to 5" style="width:100%;height:auto"></svg>
       </div>
     </div>
-    <p class="assume">Illustrative. Revenue comes from recurring advisory relationships and car-insurance quote referrals. Adoption ramps to the target over three years (30%, 60%, 100%), and assets grow at the rate set above. Final terms subject to a written agreement.</p>
+    <p class="assume">Illustrative. Revenue comes from recurring advisory relationships, car-insurance quote referrals and, when included, mortgage referrals. Adoption ramps to the target over three years (30%, 60%, 100%), and assets grow at the rate set above. Final terms subject to a written agreement.</p>
   </section>
 </main>
 <div class="tip" id="tip"></div>
 <script>
 (function(){
   // Internal economics (not shown as percentages on the page).
-  var FEE = 0.01, AA_SHARE_OF_FEE = 0.375, QUOTE_FEE = 30, REV_SHARE = 0.15, RAMP = [0.3, 0.6, 1, 1, 1];
+  var FEE = 0.01, AA_SHARE_OF_FEE = 0.375, QUOTE_FEE = 30, MORTGAGE_FEE = 1500, REV_SHARE = 0.15, RAMP = [0.3, 0.6, 1, 1, 1];
   var $ = function(id){ return document.getElementById(id); };
   var money = function(v){
     if (v >= 1e9) return '$' + (v/1e9).toFixed(2) + 'B';
@@ -153,28 +157,31 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
     return '$' + Math.round(v).toLocaleString();
   };
   var num = function(v){ return Math.round(v).toLocaleString(); };
-  var ids = ['users','adv','aum','quote','growth'];
+  var ids = ['users','adv','aum','quote','mort','growth'];
+  $('mortOn').addEventListener('change', calc);
 
   function calc(){
-    var users = +$('users').value, adv = +$('adv').value/100, aum = +$('aum').value, q = +$('quote').value/100, g = +$('growth').value/100;
+    var users = +$('users').value, adv = +$('adv').value/100, aum = +$('aum').value, q = +$('quote').value/100, mOn = $('mortOn').checked, m = mOn ? +$('mort').value/100 : 0, g = +$('growth').value/100;
     $('o_users').textContent = num(users); $('o_adv').textContent = (Math.round(adv*1000)/10) + '%';
-    $('o_aum').textContent = money(aum); $('o_quote').textContent = Math.round(q*100) + '%'; $('o_growth').textContent = Math.round(g*100) + '%';
+    $('o_aum').textContent = money(aum); $('o_quote').textContent = Math.round(q*100) + '%'; $('o_mort').textContent = (Math.round(+$('mort').value*10)/10) + '%'; $('mort').disabled = !mOn; $('mort').closest('.inp').classList.toggle('off', !mOn); $('o_growth').textContent = Math.round(g*100) + '%';
     var employees = users, clients = employees * adv;
     var years = [], total = 0, aum5 = 0, aa5 = 0;
     for (var y = 0; y < 5; y++){
       var assets = clients * RAMP[y] * aum * Math.pow(1 + g, y);
       var aaAdvisory = assets * FEE * AA_SHARE_OF_FEE;
       var aaQuotes = employees * q * RAMP[y] * QUOTE_FEE;
-      var cp = (aaAdvisory + aaQuotes) * REV_SHARE;
-      years.push({ y: y + 1, cp: cp, adv: aaAdvisory * REV_SHARE, quotes: aaQuotes * REV_SHARE });
+      var aaMort = employees * m * RAMP[y] * MORTGAGE_FEE;
+      var cp = (aaAdvisory + aaQuotes + aaMort) * REV_SHARE;
+      years.push({ y: y + 1, cp: cp, adv: aaAdvisory * REV_SHARE, quotes: aaQuotes * REV_SHARE, mort: aaMort * REV_SHARE });
       total += cp;
       if (y === 4){ aum5 = assets; aa5 = aaAdvisory + aaQuotes; }
     }
-    var run = (clients * aum * FEE * AA_SHARE_OF_FEE + employees * q * QUOTE_FEE) * REV_SHARE;
+    var run = (clients * aum * FEE * AA_SHARE_OF_FEE + employees * q * QUOTE_FEE + employees * m * MORTGAGE_FEE) * REV_SHARE;
+    $('mortRow').style.display = mOn ? 'flex' : 'none'; $('r_mort').textContent = num(employees * m);
     $('r_total').textContent = money(total);
     $('r_run').textContent = money(run) + ' a year once fully ramped, growing with assets';
     $('r_emp').textContent = num(employees); $('r_cli').textContent = num(clients);
-    $('r_aum').textContent = money(aum5);
+   
     draw(years);
   }
 
@@ -203,7 +210,7 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
     svg.querySelectorAll('.hit').forEach(function(el){
       el.addEventListener('mousemove', function(ev){
         var d = years[+el.getAttribute('data-i')];
-        tip.innerHTML = 'Year '+d.y+': <b>'+money(d.cp)+'</b><br>Advisory '+money(d.adv)+' · Quotes '+money(d.quotes);
+        tip.innerHTML = 'Year '+d.y+': <b>'+money(d.cp)+'</b><br>Advisory '+money(d.adv)+' · Quotes '+money(d.quotes)+(d.mort?' · Mortgage '+money(d.mort):'');
         tip.style.display = 'block'; tip.style.left = (ev.clientX + 14) + 'px'; tip.style.top = (ev.clientY - 10) + 'px';
       });
       el.addEventListener('mouseleave', function(){ tip.style.display = 'none'; });
