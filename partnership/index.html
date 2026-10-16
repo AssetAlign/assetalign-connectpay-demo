@@ -111,9 +111,8 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
   <section class="panel calc">
     <div class="ph"><span class="num">3</span><h2>Partnership opportunity</h2></div>
     <div class="inputs">
-      <div class="inp"><label for="clients">ConnectPay clients offered <output id="o_clients"></output></label><input id="clients" type="range" min="500" max="15000" step="500" value="10000"></div>
-      <div class="inp"><label for="emp">Employees per client <output id="o_emp"></output></label><input id="emp" type="range" min="3" max="50" step="1" value="10"></div>
-      <div class="inp"><label for="adv">Employees who work with an advisor <output id="o_adv"></output></label><input id="adv" type="range" min="1" max="40" step="0.5" value="5"><button type="button" class="avg" id="advAvg">Our average: 29%</button></div>
+      <div class="inp"><label for="users">ConnectPay user base <output id="o_users"></output></label><input id="users" type="range" min="10000" max="150000" step="5000" value="100000"></div>
+      <div class="inp"><label for="adv">Employees who work with an advisor <output id="o_adv"></output></label><input id="adv" type="range" min="1" max="40" step="0.5" value="29"><button type="button" class="avg" id="advAvg">Our average: 29%</button></div>
       <div class="inp"><label for="aum">Average assets per advisory client <output id="o_aum"></output></label><input id="aum" type="range" min="25000" max="300000" step="5000" value="75000"></div>
       <div class="inp"><label for="quote">Employees who request an insurance quote each year <output id="o_quote"></output></label><input id="quote" type="range" min="0" max="30" step="1" value="10"></div>
       <div class="inp"><label for="growth">Annual asset growth <output id="o_growth"></output></label><input id="growth" type="range" min="0" max="10" step="1" value="6"></div>
@@ -154,13 +153,13 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
     return '$' + Math.round(v).toLocaleString();
   };
   var num = function(v){ return Math.round(v).toLocaleString(); };
-  var ids = ['clients','emp','adv','aum','quote','growth'];
+  var ids = ['users','adv','aum','quote','growth'];
 
   function calc(){
-    var c = +$('clients').value, e = +$('emp').value, adv = +$('adv').value/100, aum = +$('aum').value, q = +$('quote').value/100, g = +$('growth').value/100;
-    $('o_clients').textContent = num(c); $('o_emp').textContent = e; $('o_adv').textContent = (Math.round(adv*1000)/10) + '%';
+    var users = +$('users').value, adv = +$('adv').value/100, aum = +$('aum').value, q = +$('quote').value/100, g = +$('growth').value/100;
+    $('o_users').textContent = num(users); $('o_adv').textContent = (Math.round(adv*1000)/10) + '%';
     $('o_aum').textContent = money(aum); $('o_quote').textContent = Math.round(q*100) + '%'; $('o_growth').textContent = Math.round(g*100) + '%';
-    var employees = c * e, clients = employees * adv;
+    var employees = users, clients = employees * adv;
     var years = [], total = 0, aum5 = 0, aa5 = 0;
     for (var y = 0; y < 5; y++){
       var assets = clients * RAMP[y] * aum * Math.pow(1 + g, y);
