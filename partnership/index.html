@@ -74,24 +74,24 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
 <main>
   <div class="col">
     <section class="panel">
-      <div class="ph"><span class="num">1</span><h2>Zero lift for ConnectPay</h2></div>
+      <div class="ph"><span class="num">1</span><h2>Fits into your onboarding, your way</h2></div>
       <div class="opts">
         <div class="opt">
           <span class="k">Option A</span>
           <b>A link after onboarding</b>
           <p>Add AssetAlign to your new-hire welcome, or we send the co-branded email you just saw.</p>
-          <span class="lift">No engineering</span>
+          <span class="lift">Fastest to launch</span>
         </div>
         <div class="opt">
           <span class="k">Option B</span>
           <b>Embedded in your onboarding</b>
-          <p>AssetAlign appears as a step inside ConnectPay onboarding. A secure census file pre-fills each employee.</p>
-          <span class="lift">We build it, you approve it</span>
+          <p>AssetAlign becomes a step inside ConnectPay onboarding, built to your standards. A secure census file pre-fills each employee.</p>
+          <span class="lift">Deepest integration</span>
         </div>
       </div>
       <div class="split">
-        <div><b>AssetAlign handles</b><br>Advisors and vetting, compliance, member support, reporting.</div>
-        <div><b>ConnectPay handles</b><br>The introduction. That's it.</div>
+        <div><b>ConnectPay owns</b><br>The client relationship and the onboarding experience.</div>
+        <div><b>AssetAlign supports</b><br>Advisors and vetting, compliance, member support and reporting.</div>
       </div>
     </section>
 
@@ -109,7 +109,7 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
   </div>
 
   <section class="panel calc">
-    <div class="ph"><span class="num">3</span><h2>What it’s worth to ConnectPay</h2></div>
+    <div class="ph"><span class="num">3</span><h2>Partnership opportunity</h2></div>
     <div class="inputs">
       <div class="inp"><label for="clients">ConnectPay clients offered <output id="o_clients"></output></label><input id="clients" type="range" min="500" max="15000" step="500" value="10000"></div>
       <div class="inp"><label for="emp">Employees per client <output id="o_emp"></output></label><input id="emp" type="range" min="3" max="50" step="1" value="10"></div>
@@ -118,7 +118,7 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
       <div class="inp"><label for="quote">Employees who request an insurance quote each year <output id="o_quote"></output></label><input id="quote" type="range" min="0" max="30" step="1" value="10"></div>
       <div class="inp"><label for="growth">Annual asset growth <output id="o_growth"></output></label><input id="growth" type="range" min="0" max="10" step="1" value="6"></div>
     </div>
-    <div class="share"><span>ConnectPay revenue share of AssetAlign revenue</span><b>15%</b></div>
+    <div class="share"><span>ConnectPay revenue share</span><b>15%</b></div>
 
     <div class="results">
       <div class="hero">
@@ -131,7 +131,6 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
           <div class="row"><span>Employees reached</span><b id="r_emp">0</b></div>
           <div class="row"><span>Advisory clients</span><b id="r_cli">0</b></div>
           <div class="row"><span>Assets under advice, year 5</span><b id="r_aum">$0</b></div>
-          <div class="row"><span>AssetAlign revenue, year 5</span><b id="r_aa">$0</b></div>
         </div>
       </div>
       <div class="chart">
@@ -139,7 +138,7 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
         <svg id="bars" viewBox="0 0 360 230" role="img" aria-label="ConnectPay revenue by year, years 1 to 5" style="width:100%;height:auto"></svg>
       </div>
     </div>
-    <p class="assume">Illustrative. Advisory revenue is AssetAlign’s recurring share of the advisor’s annual fee; quote revenue is the referral fee per car-insurance quote. Adoption ramps to the target over three years (30%, 60%, 100%), and assets grow at the rate set above. Final terms subject to a written agreement.</p>
+    <p class="assume">Illustrative. Revenue comes from recurring advisory relationships and car-insurance quote referrals. Adoption ramps to the target over three years (30%, 60%, 100%), and assets grow at the rate set above. Final terms subject to a written agreement.</p>
   </section>
 </main>
 <div class="tip" id="tip"></div>
@@ -176,7 +175,7 @@ svg text{font-family:'DM Sans',Arial,sans-serif}
     $('r_total').textContent = money(total);
     $('r_run').textContent = money(run) + ' a year once fully ramped, growing with assets';
     $('r_emp').textContent = num(employees); $('r_cli').textContent = num(clients);
-    $('r_aum').textContent = money(aum5); $('r_aa').textContent = money(aa5);
+    $('r_aum').textContent = money(aum5);
     draw(years);
   }
 
