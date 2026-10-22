@@ -3726,11 +3726,8 @@
   // airline/hotel points redemption chart than a projection tool.
   //   • AUM grows a flat 10%/year of the STARTING balance
   //   • Relationship credits: the REAL internal revenue-share math (2026-09-06,
-  //     per Alex: "the projection I want you to use is the internal revshare..
   //     i don't know where this 1 per 250 comes from" — that $250 figure was
   //     an unexplained rounder placeholder; replaced with the actual rate).
-  //     Advisor fee 1% of AUM -> AssetAlign keeps 37.5% of that (0.375% of
-  //     AUM) -> employee's share is 25% of AssetAlign's cut (0.09375% of
   //     AUM) = REL_CREDIT_RATE below. Same as ~1 credit per $1,067 of AUM.
   //     This formula/percentages are NEVER stated in the UI, only the
   //     resulting credit numbers — see the reference memory on AssetAlign's
@@ -3744,7 +3741,7 @@
     const usingDefault = baseAUM === null || isNaN(baseAUM);
     const aum0 = usingDefault ? 250000 : Math.max(baseAUM, CP_AUM_MIN);
     const credits0 = (startingCredits === null || isNaN(startingCredits)) ? 25 : startingCredits;
-    const AUM_GROWTH_RATE = 0.10, REL_CREDIT_RATE = 0.01 * 0.375 * 0.25, ENGAGEMENT_PER_YEAR = 100;
+    const AUM_GROWTH_RATE = 0.10, REL_CREDIT_RATE = 0.0009375, ENGAGEMENT_PER_YEAR = 100;
 
     function creditsThroughYear(years) {
       let total = credits0;
