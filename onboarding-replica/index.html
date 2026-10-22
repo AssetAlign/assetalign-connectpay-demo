@@ -2347,13 +2347,10 @@ function emailAdvisorInvite(name){
 // Same real rate as the dashboard's "Power of Your Credits" projection
 // (assetalign-dashboard-v2, renderCreditProjection's REL_CREDIT_RATE) —
 // 2026-09-06, per Alex: "we don't need to put this math anywhere.. the
-// projection i want you to use is the internal revshare.. i don't know
 // where this 1 per 250 comes from" (that was an unexplained rounder
-// placeholder). Real derivation: advisor fee 1% of AUM -> AssetAlign keeps
-// 37.5% of that -> employee's share is 25% of AssetAlign's cut. The
 // formula/percentages are never shown in the UI, only the resulting
 // credit number — see the credit-economics reference memory.
-const NETWORK_GAP_CREDIT_RATE = 0.01 * 0.375 * 0.25;
+const NETWORK_GAP_CREDIT_RATE = 0.0009375;
 // 2026-09-08, per Alex: "do we want to highlight that on our platform. one
 // credit equals one dollar.. and than maybe do the projection there" — same
 // two reinforcements added to the dashboard's own credit messaging earlier
