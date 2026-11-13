@@ -93,6 +93,15 @@ td.new{color:var(--navy);font-weight:500}
 footer{text-align:center;font-size:12px;color:var(--muted);padding:6px 16px 30px}
 @media (max-width:900px){.grid3,.grid4,.steps{grid-template-columns:1fr 1fr}.grid2,.scope{grid-template-columns:1fr}}
 @media (max-width:640px){header{padding:12px 16px}.hero{padding:30px 16px 46px}.hero h1{font-size:32px}main{padding:0 16px 30px}.panel{padding:20px 18px}.grid3,.grid4,.steps{grid-template-columns:1fr}table,thead,tbody,tr,td,th{display:block;width:auto}thead{display:none}tr{border-bottom:1px solid var(--line);padding:8px 0}td{border:0;padding:4px 0}.snap .row b{width:96px}}
+.snap .row span{display:block}
+.snap .row i{display:block;font-style:normal}
+.snap .row i.gap{color:var(--copperInk);font-weight:700}
+.pcard{border-radius:14px;padding:20px;background:var(--navy);color:var(--cream)}
+.pcard .big{font-family:'Playfair Display',Georgia,serif;font-size:28px;color:var(--gold);line-height:1.1}
+.pcard p{color:var(--cream);font-size:15px;line-height:1.45;margin-top:8px;font-style:italic}
+.pcard small{display:block;color:#BFCBD8;font-size:13px;line-height:1.45;margin-top:8px}
+.hook{background:#FFF9EE;border:2px solid var(--copper);border-radius:14px;padding:20px;font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.3}
+.ptag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--navy);color:var(--gold);border-radius:999px;padding:3px 8px;margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -102,9 +111,9 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:6px 16px 30px
 </header>
 
 <section class="hero"><div class="in">
-  <div class="eyebrow">The Personal Side of Your Business</div>
-  <h1>You spend all your time making the business work. Who's looking out for you?</h1>
-  <p>An offering for the owners behind ConnectPay's small businesses: a small team, often with family on it, and an owner who is the last person to get any attention.</p>
+  <div class="eyebrow">Big-company benefits · Built for small-business owners</div>
+  <h1>You run a small business. Your financial benefits shouldn't be small.</h1>
+  <p>A financial benefit for business owners, available exclusively through ConnectPay. It starts with a Business Owner Checkup built on three things: Profit, Protection and Personal Freedom.</p>
   <p class="callname"><b>Personal Side of Your Biz</b> is the working name. It starts with a handful of owners chosen by ConnectPay.</p>
   <span class="draft">Draft for discussion</span>
 </div></section>
@@ -112,23 +121,86 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:6px 16px 30px
 <main>
 
   <section class="panel">
-    <div class="ph"><span class="num">1</span><h2>How we'll work</h2></div>
-    <p class="lead">Four commitments that shape everything else on this page.</p>
+    <div class="ph"><span class="num">1</span><h2>The idea</h2></div>
+    <p class="lead">Big companies have long given their people access to financial planning and professional guidance. The owner of a small business gets none of that. ConnectPay can be the reason they do.</p>
+    <div class="grid3">
+      <div class="card"><h3>"ConnectPay gave me this."</h3><p class="s">The owner sees a real benefit that comes from ConnectPay, something beyond payroll. AssetAlign is the engine behind it.</p></div>
+      <div class="card"><h3>A benefit, not a consultation</h3><p class="s">A checkup, a personal financial plan and an advisor who coordinates all of it, at no cost to the owner.</p></div>
+      <div class="card"><h3>Owner first</h3><p class="s">The owner experiences it personally. Only after that does the question of their employees come up.</p></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">2</span><h2>The hook</h2></div>
+    <p class="lead">We don't lead with financial wellness, and the free plan is the offer, not the headline. An owner who hears "financial plan" assumes it is for wealthy people or that someone is selling investments. We lead with the gap between building a business and building their own future.</p>
+    <div class="grid3">
+      <div class="hook">"You've built a business. Are you building your own financial future?"</div>
+      <div class="hook">"Your business isn't your retirement plan."</div>
+      <div class="hook">"You make financial decisions for the business every day. Who's helping you make them for yourself?"</div>
+    </div>
+    <div class="grid3" style="margin-top:14px">
+      <div class="stat"><div class="big">40%</div><p>of small business owners plan to retire within the next decade.</p></div>
+      <div class="stat"><div class="big">70%</div><p>are in early-stage planning or have no formal succession plan.</p></div>
+      <div class="stat"><div class="big">8%</div><p>say they are fully prepared to hand over ownership.</p></div>
+    </div>
+    <p class="note">Source: Chase survey of about 1,000 U.S. small business owners, conducted March 2026 and published May 4, 2026.</p>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">3</span><h2>The Business Owner Checkup</h2></div>
+    <p class="lead">The front door is a checkup, and it answers three questions every owner carries around. We call them the three Ps.</p>
+    <div class="grid3">
+      <div class="pcard"><div class="big">Profit</div><p>"Am I making the most of what my business earns?"</p><small>How the owner pays themselves, what they keep and how it is taxed.</small></div>
+      <div class="pcard"><div class="big">Protection</div><p>"Am I protecting what I've built?"</p><small>What happens to the owner's income, family and business if they can't work.</small></div>
+      <div class="pcard"><div class="big">Personal Freedom</div><p>"Am I on track for the freedom I want?"</p><small>Life after the business, and the people who depend on it.</small></div>
+    </div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="mock">
+        <div class="email">
+          <div class="bar"><b>From:</b> ConnectPay<br><b>Subject:</b> A new benefit for ConnectPay business owners</div>
+          <div class="body">
+            <h4>You run a small business. Your financial benefits shouldn't be small.</h4>
+            <p>We've added a new benefit exclusively for ConnectPay business owners: a Business Owner Checkup, a personal financial plan and an advisor of your own, all at no cost to you.</p>
+            <p>It starts with six quick questions about profit, protection and personal freedom.</p>
+            <span class="btn">Start my checkup</span>
+          </div>
+        </div>
+        <p class="cap">A sample invitation. The words are ConnectPay's to change and approve.</p>
+      </div>
+      <div class="mock">
+        <div class="phone" id="flow"></div>
+        <p class="cap">The checkup. A working example, about a minute to click through.</p>
+      </div>
+    </div>
+    <p class="note">The checkup asks nothing about income or account balances. Its job is to let the advisor walk in already understanding this owner, and the owner sees their own answers played back before they talk to anyone.</p>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">4</span><h2>After the checkup</h2></div>
+    <p class="lead">The owner experience goes deeper than the one we give employees, because an owner's finances and the business are tied together.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>A real first conversation</h3><p class="s">With a vetted, independent advisor who works with business owners every day, on a day the owner picks. Longer and more thorough than a standard introduction.</p></div>
+      <div class="step"><div class="n">2</div><h3>One coordinated plan</h3><p class="s">The advisor is the quarterback. They build one plan across profit, protection and personal freedom, and bring in a specialist only when something calls for it.</p></div>
+      <div class="step"><div class="n">3</div><h3>Family at the table</h3><p class="s">The owner can bring in a spouse or the next generation, because the business and the household are one set of decisions.</p></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">5</span><h2>How we'll work</h2></div>
+    <p class="lead">Four commitments to ConnectPay.</p>
     <div class="grid4">
-      <div class="rule star"><h3>No salespeople at the table</h3><p>No sales calls and no pitch. An owner answers a few questions and talks with an advisor only when they choose to.</p></div>
+      <div class="rule star"><h3>No lift for your sales team</h3><p>It runs on an email and a landing page. Nobody at ConnectPay has to sell it, and nobody sells to the owner.</p></div>
       <div class="rule"><h3>Clear scope</h3><p>What the advisor covers and what goes back to ConnectPay is written down before the first owner is invited.</p></div>
       <div class="rule"><h3>Your partners come first</h3><p>When an owner's plan calls for something a ConnectPay partner provides, that partner gets the first call.</p></div>
-      <div class="rule"><h3>Your relationship</h3><p>ConnectPay chooses the owners, the timing and the message. AssetAlign does the work behind it.</p></div>
+      <div class="rule"><h3>Your voice</h3><p>We don't speak for ConnectPay. You choose the owners and the timing, and you approve every word they see.</p></div>
     </div>
     <div class="scope">
       <div class="in"><h3>What the advisor covers</h3><ul>
         <li>One plan for the owner and the household, with the business in the picture</li>
-        <li>Paying yourself when income is uneven</li>
-        <li>Saving for the owner's own retirement and how each option is taxed</li>
-        <li>What happens to the owner's income and the business if they can't work</li>
-        <li>Life after the business: passing it on, selling it or winding it down</li>
+        <li>Profit: paying yourself, what you keep, and how retirement options are taxed</li>
+        <li>Protection: the owner's income, family and ownership if they can't work</li>
+        <li>Personal Freedom: passing the business on, selling it or winding it down</li>
         <li>A will, beneficiaries and who can act if the owner can't</li>
-        <li>Bringing a spouse or family member into the plan</li>
       </ul></div>
       <div class="out"><h3>What goes to ConnectPay's partners first</h3><ul>
         <li>Coverage for the business itself</li>
@@ -140,103 +212,35 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:6px 16px 30px
   </section>
 
   <section class="panel">
-    <div class="ph"><span class="num">2</span><h2>Who it's for</h2></div>
-    <p class="lead">At this size the owner and the business are the same thing. That is what makes this offering different from anything built for employees.</p>
-    <div class="grid3">
-      <div class="seg"><div class="big">A small team</div><p>A shop, a restaurant, a small practice. The owner opens, closes, covers shifts and signs the checks.</p></div>
-      <div class="seg"><div class="big">Family on the team</div><p>A spouse does the books or a son or daughter works the floor. The household depends on one business.</p></div>
-      <div class="seg"><div class="big">Everything in one place</div><p>Most of what the owner has built is inside the business, and most of it depends on the owner showing up.</p></div>
+    <div class="ph"><span class="num">6</span><h2>Then, their team</h2></div>
+    <p class="lead">Once an owner has been through it, the next question comes naturally: "Would you like us to do this for your employees too? There's no cost to your business."</p>
+    <div class="grid2">
+      <div class="card"><h3>Why owner first works</h3><p class="s">Someone running a five-person shop isn't shopping for a financial wellness program. They will, though, do something for the people who have worked alongside them for years, once they've seen it for themselves.</p></div>
+      <div class="card"><h3>A benefit for both sides of the business</h3><p class="s">ConnectPay gives the owner something personal, then gives the owner something to offer the team. The employee version is the small-business program we've already outlined together.</p></div>
     </div>
   </section>
 
   <section class="panel">
-    <div class="ph"><span class="num">3</span><h2>Different questions, for a different reason</h2></div>
-    <p class="lead">Our employee questions exist to work out which services fit each person. An owner doesn't need to be sorted: every owner is a fit for an advisor. So the questions have one job, which is to let the advisor walk in already understanding this owner. We don't ask about income or balances at all.</p>
-    <table>
-      <thead><tr><th>What we ask employees</th><th>What we ask owners</th><th>Why</th></tr></thead>
-      <tbody>
-        <tr><td>Income range</td><td class="new">How do you pay yourself?</td><td>The amount comes up in conversation. How it arrives shapes the whole plan.</td></tr>
-        <tr><td>Do you have three to six months saved?</td><td class="new">If you couldn't work for three months, what happens?</td><td>For an owner the risk is the business stopping, and the household with it.</td></tr>
-        <tr><td>Are you in the 401(k)?</td><td class="new">What do you already have in place?</td><td>A quick checklist shows the advisor where the gaps are before the first conversation.</td></tr>
-        <tr><td>Do you own a home?</td><td class="new">Who owns the business with you, and does family work in it?</td><td>Ownership and family are where an owner's planning starts.</td></tr>
-        <tr><td>What is your top priority?</td><td class="new">Someday, what do you want for the business?</td><td>Most owners haven't been asked. The answer drives everything long term.</td></tr>
-      </tbody>
-    </table>
-    <div class="grid2" style="margin-top:18px">
-      <div class="mock">
-        <div class="email">
-          <div class="bar"><b>From:</b> ConnectPay<br><b>Subject:</b> Who's looking out for you?</div>
-          <div class="body">
-            <h4>The personal side of your business.</h4>
-            <p>You spend all your time making the business work. Your customers, your team and your family all count on you.</p>
-            <p>We've arranged something for you, personally: a financial plan built for a business owner, at no cost. It starts with six quick questions and nobody will call you.</p>
-            <span class="btn">Take a look</span>
-          </div>
-        </div>
-        <p class="cap">The invitation. ConnectPay approves every word.</p>
-      </div>
-      <div class="mock">
-        <div class="phone" id="flow"></div>
-        <p class="cap">The owner questions. A working example, about a minute to click through.</p>
-      </div>
-    </div>
-    <div class="steps" style="margin-top:16px">
-      <div class="step"><div class="n">1</div><h3>Six taps</h3><p class="s">Nothing to type, nothing to look up and no documents to find.</p></div>
-      <div class="step"><div class="n">2</div><h3>A picture of where they stand</h3><p class="s">The owner sees their answers played back in plain words, including what isn't in place yet.</p></div>
-      <div class="step"><div class="n">3</div><h3>An advisor who already knows</h3><p class="s">A vetted, independent advisor who works with business owners, on a day the owner picks, leading to a written plan.</p></div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="ph"><span class="num">4</span><h2>What owners get</h2></div>
-    <p class="lead">Employees at large companies get this kind of help as a benefit. The owner of a small business rarely gets it at all.</p>
-    <div class="grid3">
-      <div class="card"><span class="pill">No fixed paycheck</span><h3>Paying yourself</h3><p class="s">A steady personal income and a cushion for when the business has good months and slow ones.</p></div>
-      <div class="card"><span class="pill">If you can't work</span><h3>Protecting the household</h3><p class="s">A plan for the owner's income, and for the business, if the owner is hurt, sick or gone.</p></div>
-      <div class="card"><span class="pill">Tax advantages</span><h3>Saving for your own retirement</h3><p class="s">A clear view of the options open to an owner and how each one is taxed.</p></div>
-      <div class="card"><span class="pill">Succession</span><h3>Life after the business</h3><p class="s">Passing it to family, selling it or winding it down, and what each one means for the owner's finances now.</p></div>
-      <div class="card"><span class="pill">Light estate planning</span><h3>If something happens</h3><p class="s">A will, up-to-date beneficiaries and a named person who can act, so the family isn't left guessing.</p></div>
-      <div class="card"><span class="pill">Family</span><h3>Bringing family in</h3><p class="s">A spouse or family member can join, because the business and the household are one set of decisions.</p></div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="ph"><span class="num">5</span><h2>The message</h2></div>
-    <p class="lead">One question carries it: who's looking out for you? Three ideas sit behind it, with numbers to back them up.</p>
-    <div class="grid3">
-      <div class="card"><h3>"You're busy."</h3><p class="s">Six taps to start, on the owner's schedule, with nothing to prepare and nobody calling.</p></div>
-      <div class="card"><h3>Professionalize the personal side</h3><p class="s">The business has payroll, books and a process. The owner's own finances deserve the same, with family involved.</p></div>
-      <div class="card"><h3>Fortune 500 benefits, small business</h3><p class="s">The personal financial help large employers provide, for the person who owns the shop.</p></div>
-    </div>
-    <div class="grid3" style="margin-top:14px">
-      <div class="stat"><div class="big">40%</div><p>of small business owners plan to retire within the next decade.</p></div>
-      <div class="stat"><div class="big">70%</div><p>are in early-stage planning or have no formal succession plan.</p></div>
-      <div class="stat"><div class="big">8%</div><p>say they are fully prepared to hand over ownership.</p></div>
-    </div>
-    <p class="note">Source: Chase survey of about 1,000 U.S. small business owners, conducted March 2026 and published May 4, 2026.</p>
-  </section>
-
-  <section class="panel">
-    <div class="ph"><span class="num">6</span><h2>Go to market</h2></div>
+    <div class="ph"><span class="num">7</span><h2>Go to market</h2></div>
     <p class="lead">Start small enough to learn from every owner, then widen with what we learn.</p>
     <div class="grid2">
-      <div class="card"><span class="who cp">First</span><h3>A handful of owners</h3><p class="s">ConnectPay picks a handful of owners of very small businesses and sends each one a personal invitation. Every one of them gets close attention, and we hear directly what landed and what didn't.</p></div>
+      <div class="card"><span class="who cp">First</span><h3>A handful of owners</h3><p class="s">ConnectPay picks a handful of owners and sends each one a personal invitation. Every one of them gets close attention, and we hear directly what landed and what didn't.</p></div>
       <div class="card"><span class="who both">Then</span><h3>The "Business Resolution"</h3><p class="s">Q1 into Q2: a new-year theme, one resolution for the person behind the business, sent as a segmented email that leads to a single landing page. The wording comes from what the first owners told us.</p></div>
     </div>
   </section>
 
   <section class="panel">
-    <div class="ph"><span class="num">7</span><h2>What we'd need from each side</h2></div>
+    <div class="ph"><span class="num">8</span><h2>What we'd need from each side</h2></div>
     <div class="grid2">
       <div class="card"><h3>From ConnectPay</h3><ul>
         <li>A handful of owners, chosen by ConnectPay</li>
         <li>Which partner handles each need that goes back to ConnectPay</li>
-        <li>Sign-off on the name, the invitation and the questions</li>
+        <li>Sign-off on the name, the invitation and the checkup</li>
         <li>The invitation sent from ConnectPay to those owners</li>
         <li>One product contact</li>
       </ul></div>
       <div class="card"><h3>From AssetAlign</h3><ul>
-        <li>The owner questions and the picture owners see afterward</li>
+        <li>The Business Owner Checkup and the picture owners see afterward</li>
         <li>The invitation, written for ConnectPay's approval</li>
         <li>A small group of advisors who work with business owners</li>
         <li>Support for every owner, from first click to plan</li>
@@ -252,18 +256,18 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:6px 16px 30px
 <script>
 (function(){
 var QS=[
- {k:'own',q:'Who owns the business with you?',o:[['Just me','on your own'],['My spouse or family','with family'],['A business partner','with a business partner']]},
- {k:'fam',q:'Does family work in the business?',o:[['Yes, day to day','Family works in it day to day'],['Sometimes','Family helps out sometimes'],['No','Family doesn\'t work in it']]},
- {k:'pay',q:'How do you pay yourself?',o:[['A regular paycheck','A regular paycheck'],['I take money out when it\'s there','You take money out when it\'s there'],['Whatever is left over','Whatever is left over'],['It changes all the time','It changes all the time']]},
- {k:'stop',q:'If you couldn\'t work for three months, what happens?',h:'There\'s no wrong answer.',o:[['The business would keep running','The business keeps running',0],['Someone could cover for a while','Someone could cover for a while',0],['It would stop','The business stops',1]]},
- {k:'some',q:'Someday, what do you want for the business?',o:[['Pass it to family','Pass it to family',0],['Sell it','Sell it',0],['Wind it down','Wind it down',0],['I haven\'t had time to think about it','Not decided yet',1]]},
- {k:'have',multi:1,q:'Which of these do you already have?',h:'Tap any that apply.',o:[['A will'],['Life insurance'],['Income protection if I\'m hurt or sick'],['Retirement savings outside the business'],['A written plan for the business if something happens to me']]}
+ {k:'pay',p:'Profit',q:'How do you pay yourself?',o:[['A regular paycheck','You pay yourself a regular paycheck',0],['I take money out when it\'s there','You take money out when it\'s there',0],['Whatever is left over','You get whatever is left over',1],['It changes all the time','Your pay changes all the time',1]]},
+ {k:'keep',p:'Profit',q:'Outside the business, are you putting money away for yourself?',o:[['Yes, regularly','You put money away for yourself regularly',0],['When I can','You put money away when you can',0],['Not really, it goes back into the business','Most of it goes back into the business',1]]},
+ {k:'stop',p:'Protection',q:'If you couldn\'t work for three months, what happens?',o:[['The business would keep running','The business keeps running without you',0],['Someone could cover for a while','Someone could cover for a while',0],['It would stop','If you stop, the business stops',1]]},
+ {k:'have',p:'Protection',multi:1,q:'Which of these do you already have?',h:'Tap any that apply.',o:[['A will'],['Life insurance'],['Income protection if I\'m hurt or sick'],['A written plan for the business if something happens to me']]},
+ {k:'some',p:'Personal Freedom',q:'Someday, what do you want for the business?',o:[['Pass it to family','You want to pass it to family',0],['Sell it','You want to sell it',0],['Wind it down','You plan to wind it down',0],['I haven\'t had time to think about it','You haven\'t decided what happens to it someday',1]]},
+ {k:'who',p:'Personal Freedom',q:'If something happened to you, who would need to know all this?',o:[['My spouse or partner','your spouse or partner',0],['My son or daughter','your son or daughter',0],['My business partner','your business partner',0],['Nobody knows right now','',1]]}
 ];
 var el=document.getElementById('flow'),i=0,A={};
 function dots(){var s='<div class="dots">';for(var n=0;n<QS.length;n++)s+='<span'+(n<=i?' class="on"':'')+'></span>';return s+'</div>';}
 function show(){
  if(i>=QS.length)return snap();
- var Q=QS[i],s=dots()+'<div class="q">'+Q.q+'</div><div class="hint">'+(Q.h||'Question '+(i+1)+' of '+QS.length)+'</div>';
+ var Q=QS[i],s=dots()+'<span class="ptag">'+Q.p+'</span><div class="q">'+Q.q+'</div><div class="hint">'+(Q.h||'Question '+(i+1)+' of '+QS.length)+'</div>';
  Q.o.forEach(function(o,n){s+='<button class="opt" data-n="'+n+'">'+o[0]+'</button>';});
  if(Q.multi)s+='<button class="btn" id="go" style="margin-top:4px">Continue</button>';
  el.innerHTML=s;
@@ -275,25 +279,24 @@ function show(){
  });});
  if(Q.multi)document.getElementById('go').addEventListener('click',function(){i++;show();});
 }
-function row(l,t,g){return '<div class="row"><b>'+l+'</b><span'+(g?' class="gap"':'')+'>'+t+'</span></div>';}
+function ln(o){return '<i'+(o[2]?' class="gap"':'')+'>'+o[1]+'.</i>';}
+function row(l,t){return '<div class="row"><b>'+l+'</b><span>'+t+'</span></div>';}
 function snap(){
- var h=QS[5].o,have=[],not=[];
- h.forEach(function(o,n){(A.have.indexOf(n)>=0?have:not).push(o[0].replace('I\'m','you\'re').replace(' me',' you'));});
+ var have=[],not=[];
+ QS[3].o.forEach(function(o,n){(A.have.indexOf(n)>=0?have:not).push(o[0].replace('I\'m','you\'re').replace(' me',' you'));});
  [have,not].forEach(function(L){L.forEach(function(t,n){if(n)L[n]=t.charAt(0).toLowerCase()+t.slice(1);});});
- var st=QS[3].o[A.stop],so=QS[4].o[A.some];
- el.innerHTML='<div class="snap"><h4>Here\'s where you stand.</h4>'+
-  row('The business','You own it '+QS[0].o[A.own][1]+'. '+QS[1].o[A.fam][1]+'.')+
-  row('Your pay',QS[2].o[A.pay][1]+'.')+
-  row('If you can\'t work',st[1]+'.',st[2])+
-  row('Someday',so[1]+'.',so[2])+
-  row('In place',have.length?have.join(', ')+'.':'Nothing yet.',!have.length)+
-  (not.length?row('Not yet',not.join(', ')+'.',1):'')+
+ var w=QS[5].o[A.who];
+ el.innerHTML='<div class="snap"><h4>Your Business Owner Checkup</h4>'+
+  row('Profit',ln(QS[0].o[A.pay])+ln(QS[1].o[A.keep]))+
+  row('Protection',ln(QS[2].o[A.stop])+(have.length?'<i>In place: '+have.join(', ')+'.</i>':'')+(not.length?'<i class="gap">Not yet: '+not.join(', ')+'.</i>':''))+
+  row('Personal Freedom',ln(QS[4].o[A.some])+(w[2]?'<i class="gap">Nobody else knows the full picture.</i>':'<i>The person who needs to know: '+w[1]+'.</i>'))+
   '<p class="end">Your advisor starts from this, so you never have to explain it twice.</p>'+
-  '<span class="btn">Pick a time that works</span><button class="again" id="again">Start over</button></div>';
+  '<span class="btn">Pick a time with your advisor</span>'+
+  '<p class="end" style="margin-bottom:0"><u>'+(w[2]?'Invite someone to see this':'Bring in '+w[1])+'</u><button class="again" id="again">Start over</button></p></div>';
  document.getElementById('again').addEventListener('click',function(){i=0;A={};show();});
 }
 show();
-if(location.hash==='#test'){A={own:1,fam:0,pay:1,stop:2,some:3,have:[1]};i=QS.length;show();}
+if(location.hash==='#test'){A={pay:1,keep:2,stop:2,have:[1],some:3,who:0};i=QS.length;show();}
 })();
 </script>
 </body>
