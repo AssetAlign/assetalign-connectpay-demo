@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<title>The Personal Side of Your Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1F33;--navy2:#162B45;--navy3:#1E3A57;--gold:#F5A623;--copper:#C9843A;--copperInk:#9A5F1F;--cream:#F8F5EF;--card:#FFFFFF;--line:#E7E1D4;--ink2:#4A5568;--muted:#6B7785;--green:#2F7A4F}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--cream);color:var(--navy);font-family:'DM Sans',Arial,sans-serif}
+header{background:var(--navy);color:var(--cream);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+header img{height:40px}
+header .tag{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#BFCBD8}
+.hero{background:var(--navy);color:var(--cream);padding:44px 32px 56px}
+.hero .in{max-width:1100px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:46px;line-height:1.1;margin:12px 0 14px;max-width:900px}
+.hero p{font-size:18px;color:#BFCBD8;line-height:1.5;max-width:740px}
+.callname{margin-top:16px;font-size:15px!important;border-left:3px solid var(--gold);padding-left:12px}
+.callname b{color:var(--cream)}
+.draft{display:inline-block;margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--gold);border-radius:999px;padding:5px 12px}
+main{max-width:1100px;margin:-28px auto 0;padding:0 32px 40px;display:flex;flex-direction:column;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 28px}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;flex:none}
+h2{font-family:'Playfair Display',Georgia,serif;font-size:26px;line-height:1.15}
+.lead{font-size:15px;color:var(--ink2);line-height:1.55;margin:4px 0 18px;max-width:820px}
+h3{font-size:16px;margin-bottom:6px}
+p.s{font-size:14px;color:var(--ink2);line-height:1.5}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:#FBF9F4;border:1px solid var(--line);border-radius:14px;padding:18px}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copperInk);margin-bottom:6px}
+.rule{background:var(--navy);color:var(--cream);border-radius:14px;padding:18px}
+.rule h3{color:var(--gold);font-size:15px}
+.rule p{color:#BFCBD8;font-size:14px;line-height:1.45}
+.rule.star{outline:2px solid var(--gold);outline-offset:-2px}
+.scope{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.scope .in{border:1px solid #CFE3D6;background:#F3F9F5;border-radius:14px;padding:18px}
+.scope .out{border:1px solid var(--line);background:#FBF9F4;border-radius:14px;padding:18px}
+.scope h3{font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.scope .in h3{color:var(--green)}
+.scope .out h3{color:var(--copperInk)}
+ul{padding-left:18px}
+li{font-size:14px;color:var(--ink2);line-height:1.5;margin-bottom:6px}
+.seg{border-radius:14px;padding:20px;background:var(--navy);color:var(--cream)}
+.seg .big{font-family:'Playfair Display',Georgia,serif;font-size:30px;color:var(--gold);line-height:1.1}
+.seg p{color:#BFCBD8;font-size:14px;line-height:1.45;margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:2px solid var(--line)}
+td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45;color:var(--ink2);width:33%}
+td.new{color:var(--navy);font-weight:500}
+.stat{background:#FBF9F4;border:1px solid var(--line);border-radius:14px;padding:18px}
+.stat .big{font-family:'Playfair Display',Georgia,serif;font-size:40px;color:var(--copper);line-height:1}
+.stat p{font-size:14px;color:var(--ink2);line-height:1.45;margin-top:8px}
+.mock{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:20px}
+.cap{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+.email{background:#fff;border-radius:14px;box-shadow:0 10px 24px rgba(13,31,51,.10);overflow:hidden;max-width:440px;margin:0 auto}
+.email .bar{padding:12px 16px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.5}
+.email .bar b{color:var(--navy)}
+.email .body{padding:18px 18px 20px}
+.email .body h4{font-family:'Playfair Display',Georgia,serif;font-size:22px;line-height:1.2;margin-bottom:8px}
+.email .body p{font-size:14px;color:var(--ink2);line-height:1.5;margin-bottom:10px}
+.btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-size:14px;border-radius:10px;padding:10px 16px;border:0;font-family:inherit;cursor:pointer}
+.phone{background:#fff;border-radius:14px;padding:20px;box-shadow:0 10px 24px rgba(13,31,51,.10);max-width:440px;margin:0 auto;min-height:330px}
+.dots{display:flex;gap:5px;margin-bottom:14px}
+.dots span{flex:1;height:4px;border-radius:2px;background:var(--line)}
+.dots span.on{background:var(--copper)}
+.phone .q{font-weight:700;font-size:17px;margin-bottom:4px;line-height:1.3}
+.phone .hint{font-size:13px;color:var(--muted);margin-bottom:12px}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-size:14px;padding:11px 14px;margin-bottom:8px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--navy);cursor:pointer}
+.opt:hover{border-color:var(--copper)}
+.opt.on{border-color:var(--copper);background:#FFF6E8;font-weight:700}
+.snap h4{font-family:'Playfair Display',Georgia,serif;font-size:21px;margin-bottom:10px}
+.snap .row{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink2);line-height:1.4}
+.snap .row b{color:var(--navy);flex:none;width:118px}
+.snap .gap{color:var(--copperInk);font-weight:700}
+.snap .end{font-size:13px;color:var(--muted);margin:12px 0 10px;line-height:1.45}
+.again{background:none;border:0;color:var(--copperInk);font:600 13px 'DM Sans',Arial,sans-serif;cursor:pointer;text-decoration:underline;margin-left:12px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{background:#FBF9F4;border:1px solid var(--line);border-radius:14px;padding:18px}
+.step .n{font-family:'Playfair Display',Georgia,serif;font-size:30px;color:var(--copper);line-height:1}
+.step h3{margin-top:8px}
+.who{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 8px;margin-bottom:8px}
+.who.aa{background:var(--navy);color:var(--gold)}
+.who.cp{background:#E6F2EA;color:#2F7A4F}
+.who.both{background:#FBF0D9;color:#9A6A12}
+.note{font-size:12px;color:var(--muted);line-height:1.45;margin-top:14px}
+footer{text-align:center;font-size:12px;color:var(--muted);padding:6px 16px 30px}
+@media (max-width:900px){.grid3,.grid4,.steps{grid-template-columns:1fr 1fr}.grid2,.scope{grid-template-columns:1fr}}
+@media (max-width:640px){header{padding:12px 16px}.hero{padding:30px 16px 46px}.hero h1{font-size:32px}main{padding:0 16px 30px}.panel{padding:20px 18px}.grid3,.grid4,.steps{grid-template-columns:1fr}table,thead,tbody,tr,td,th{display:block;width:auto}thead{display:none}tr{border-bottom:1px solid var(--line);padding:8px 0}td{border:0;padding:4px 0}.snap .row b{width:96px}}
+</style>
+</head>
+<body>
+<header>
+  <img src="https://assetalign.github.io/assetalign-connectpay-demo/assets/aa-logo-dark.png" alt="AssetAlign">
+  <span class="tag">Business owner offering · ConnectPay</span>
+</header>
+
+<section class="hero"><div class="in">
+  <div class="eyebrow">The Personal Side of Your Business</div>
+  <h1>You spend all your time making the business work. Who's looking out for you?</h1>
+  <p>An offering for the owners behind ConnectPay's smallest businesses: four to six people, often with family on the team, and an owner who is the last person to get any attention.</p>
+  <p class="callname"><b>Personal Side of Your Biz</b> is the working name. It starts with a handful of owners chosen by ConnectPay.</p>
+  <span class="draft">Draft for discussion</span>
+</div></section>
+
+<main>
+
+  <section class="panel">
+    <div class="ph"><span class="num">1</span><h2>How we'll work</h2></div>
+    <p class="lead">Four commitments that shape everything else on this page.</p>
+    <div class="grid4">
+      <div class="rule star"><h3>No salespeople at the table</h3><p>No sales calls and no pitch. An owner answers a few questions and talks with an advisor only when they choose to.</p></div>
+      <div class="rule"><h3>Clear scope</h3><p>What the advisor covers and what goes back to ConnectPay is written down before the first owner is invited.</p></div>
+      <div class="rule"><h3>Your partners come first</h3><p>When an owner's plan calls for something a ConnectPay partner provides, that partner gets the first call.</p></div>
+      <div class="rule"><h3>Your relationship</h3><p>ConnectPay chooses the owners, the timing and the message. AssetAlign does the work behind it.</p></div>
+    </div>
+    <div class="scope">
+      <div class="in"><h3>What the advisor covers</h3><ul>
+        <li>One plan for the owner and the household, with the business in the picture</li>
+        <li>Paying yourself when income is uneven</li>
+        <li>Saving for the owner's own retirement and how each option is taxed</li>
+        <li>What happens to the owner's income and the business if they can't work</li>
+        <li>Life after the business: passing it on, selling it or winding it down</li>
+        <li>A will, beneficiaries and who can act if the owner can't</li>
+        <li>Bringing a spouse or family member into the plan</li>
+      </ul></div>
+      <div class="out"><h3>What goes to ConnectPay's partners first</h3><ul>
+        <li>Coverage for the business itself</li>
+        <li>Employee benefits and group health coverage</li>
+        <li>Setting up or changing a retirement plan for the company</li>
+        <li>Payroll, HR and tax filing for the business</li>
+      </ul><p class="s" style="margin-top:8px">A good plan will surface these needs. ConnectPay tells us who handles each one, and the owner is pointed there.</p></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">2</span><h2>Who it's for</h2></div>
+    <p class="lead">At this size the owner and the business are the same thing. That is what makes this offering different from anything built for employees.</p>
+    <div class="grid3">
+      <div class="seg"><div class="big">4 to 6 people</div><p>A shop, a restaurant, a small practice. The owner opens, closes, covers shifts and signs the checks.</p></div>
+      <div class="seg"><div class="big">Family on the team</div><p>A spouse does the books or a son or daughter works the floor. The household depends on one business.</p></div>
+      <div class="seg"><div class="big">Everything in one place</div><p>Most of what the owner has built is inside the business, and most of it depends on the owner showing up.</p></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">3</span><h2>Different questions, for a different reason</h2></div>
+    <p class="lead">Our employee questions exist to work out which services fit each person. An owner doesn't need to be sorted: every owner is a fit for an advisor. So the questions have one job, which is to let the advisor walk in already understanding this owner. We don't ask about income or balances at all.</p>
+    <table>
+      <thead><tr><th>What we ask employees</th><th>What we ask owners</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Income range</td><td class="new">How do you pay yourself?</td><td>The amount comes up in conversation. How it arrives shapes the whole plan.</td></tr>
+        <tr><td>Do you have three to six months saved?</td><td class="new">If you couldn't work for three months, what happens?</td><td>For an owner the risk is the business stopping, and the household with it.</td></tr>
+        <tr><td>Are you in the 401(k)?</td><td class="new">What do you already have in place?</td><td>A quick checklist shows the advisor where the gaps are before the first conversation.</td></tr>
+        <tr><td>Do you own a home?</td><td class="new">Who owns the business with you, and does family work in it?</td><td>Ownership and family are where an owner's planning starts.</td></tr>
+        <tr><td>What is your top priority?</td><td class="new">Someday, what do you want for the business?</td><td>Most owners haven't been asked. The answer drives everything long term.</td></tr>
+      </tbody>
+    </table>
+    <div class="grid2" style="margin-top:18px">
+      <div class="mock">
+        <div class="email">
+          <div class="bar"><b>From:</b> ConnectPay<br><b>Subject:</b> Who's looking out for you?</div>
+          <div class="body">
+            <h4>The personal side of your business.</h4>
+            <p>You spend all your time making the business work. Your customers, your team and your family all count on you.</p>
+            <p>We've arranged something for you, personally: a financial plan built for a business owner, at no cost. It starts with six quick questions and nobody will call you.</p>
+            <span class="btn">Take a look</span>
+          </div>
+        </div>
+        <p class="cap">The invitation. ConnectPay approves every word.</p>
+      </div>
+      <div class="mock">
+        <div class="phone" id="flow"></div>
+        <p class="cap">The owner questions. A working example, about a minute to click through.</p>
+      </div>
+    </div>
+    <div class="steps" style="margin-top:16px">
+      <div class="step"><div class="n">1</div><h3>Six taps</h3><p class="s">Nothing to type, nothing to look up and no documents to find.</p></div>
+      <div class="step"><div class="n">2</div><h3>A picture of where they stand</h3><p class="s">The owner sees their answers played back in plain words, including what isn't in place yet.</p></div>
+      <div class="step"><div class="n">3</div><h3>An advisor who already knows</h3><p class="s">A vetted, independent advisor who works with business owners, on a day the owner picks, leading to a written plan.</p></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">4</span><h2>What owners get</h2></div>
+    <p class="lead">Employees at large companies get this kind of help as a benefit. The owner of a six-person business rarely gets it at all.</p>
+    <div class="grid3">
+      <div class="card"><span class="pill">No fixed paycheck</span><h3>Paying yourself</h3><p class="s">A steady personal income and a cushion for when the business has good months and slow ones.</p></div>
+      <div class="card"><span class="pill">If you can't work</span><h3>Protecting the household</h3><p class="s">A plan for the owner's income, and for the business, if the owner is hurt, sick or gone.</p></div>
+      <div class="card"><span class="pill">Tax advantages</span><h3>Saving for your own retirement</h3><p class="s">A clear view of the options open to an owner and how each one is taxed.</p></div>
+      <div class="card"><span class="pill">Succession</span><h3>Life after the business</h3><p class="s">Passing it to family, selling it or winding it down, and what each one means for the owner's finances now.</p></div>
+      <div class="card"><span class="pill">Light estate planning</span><h3>If something happens</h3><p class="s">A will, up-to-date beneficiaries and a named person who can act, so the family isn't left guessing.</p></div>
+      <div class="card"><span class="pill">Family</span><h3>Bringing family in</h3><p class="s">A spouse or family member can join, because the business and the household are one set of decisions.</p></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">5</span><h2>The message</h2></div>
+    <p class="lead">One question carries it: who's looking out for you? Three ideas sit behind it, with numbers to back them up.</p>
+    <div class="grid3">
+      <div class="card"><h3>"You're busy."</h3><p class="s">Six taps to start, on the owner's schedule, with nothing to prepare and nobody calling.</p></div>
+      <div class="card"><h3>Professionalize the personal side</h3><p class="s">The business has payroll, books and a process. The owner's own finances deserve the same, with family involved.</p></div>
+      <div class="card"><h3>Fortune 500 benefits, small business</h3><p class="s">The personal financial help large employers provide, for the person who owns the shop.</p></div>
+    </div>
+    <div class="grid3" style="margin-top:14px">
+      <div class="stat"><div class="big">40%</div><p>of small business owners plan to retire within the next decade.</p></div>
+      <div class="stat"><div class="big">70%</div><p>are in early-stage planning or have no formal succession plan.</p></div>
+      <div class="stat"><div class="big">8%</div><p>say they are fully prepared to hand over ownership.</p></div>
+    </div>
+    <p class="note">Source: Chase survey of about 1,000 U.S. small business owners, conducted March 2026 and published May 4, 2026.</p>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">6</span><h2>Go to market</h2></div>
+    <p class="lead">Start small enough to learn from every owner, then widen with what we learn.</p>
+    <div class="grid2">
+      <div class="card"><span class="who cp">First</span><h3>A handful of owners</h3><p class="s">ConnectPay picks a handful of owners of very small businesses and sends each a personal invitation. Every one of them gets close attention, and we hear directly what landed and what didn't.</p></div>
+      <div class="card"><span class="who both">Then</span><h3>The "Business Resolution"</h3><p class="s">Q1 into Q2: a new-year theme, one resolution for the person behind the business, sent as a segmented email that leads to a single landing page. The wording comes from what the first owners told us.</p></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><span class="num">7</span><h2>What we'd need from each side</h2></div>
+    <div class="grid2">
+      <div class="card"><h3>From ConnectPay</h3><ul>
+        <li>A handful of owners, chosen by ConnectPay</li>
+        <li>Which partner handles each need that goes back to ConnectPay</li>
+        <li>Sign-off on the name, the invitation and the questions</li>
+        <li>The invitation sent from ConnectPay to those owners</li>
+        <li>One product contact</li>
+      </ul></div>
+      <div class="card"><h3>From AssetAlign</h3><ul>
+        <li>The owner questions and the picture owners see afterward</li>
+        <li>The invitation, written for ConnectPay's approval</li>
+        <li>A small group of advisors who work with business owners</li>
+        <li>Support for every owner, from first click to plan</li>
+        <li>What we heard from the first owners, shared with ConnectPay</li>
+        <li>A dedicated point person for ConnectPay</li>
+      </ul></div>
+    </div>
+  </section>
+
+</main>
+<footer>Draft for discussion; final terms subject to a written agreement.</footer>
+
+<script>
+(function(){
+var QS=[
+ {k:'own',q:'Who owns the business with you?',o:[['Just me','on your own'],['My spouse or family','with family'],['A business partner','with a business partner']]},
+ {k:'fam',q:'Does family work in the business?',o:[['Yes, day to day','Family works in it day to day'],['Sometimes','Family helps out sometimes'],['No','Family doesn\'t work in it']]},
+ {k:'pay',q:'How do you pay yourself?',o:[['A regular paycheck','A regular paycheck'],['I take money out when it\'s there','You take money out when it\'s there'],['Whatever is left over','Whatever is left over'],['It changes all the time','It changes all the time']]},
+ {k:'stop',q:'If you couldn\'t work for three months, what happens?',h:'There\'s no wrong answer.',o:[['The business would keep running','The business keeps running',0],['Someone could cover for a while','Someone could cover for a while',0],['It would stop','The business stops',1]]},
+ {k:'some',q:'Someday, what do you want for the business?',o:[['Pass it to family','Pass it to family',0],['Sell it','Sell it',0],['Wind it down','Wind it down',0],['I haven\'t had time to think about it','Not decided yet',1]]},
+ {k:'have',multi:1,q:'Which of these do you already have?',h:'Tap any that apply.',o:[['A will'],['Life insurance'],['Income protection if I\'m hurt or sick'],['Retirement savings outside the business'],['A written plan for the business if something happens to me']]}
+];
+var el=document.getElementById('flow'),i=0,A={};
+function dots(){var s='<div class="dots">';for(var n=0;n<QS.length;n++)s+='<span'+(n<=i?' class="on"':'')+'></span>';return s+'</div>';}
+function show(){
+ if(i>=QS.length)return snap();
+ var Q=QS[i],s=dots()+'<div class="q">'+Q.q+'</div><div class="hint">'+(Q.h||'Question '+(i+1)+' of '+QS.length)+'</div>';
+ Q.o.forEach(function(o,n){s+='<button class="opt" data-n="'+n+'">'+o[0]+'</button>';});
+ if(Q.multi)s+='<button class="btn" id="go" style="margin-top:4px">Continue</button>';
+ el.innerHTML=s;
+ if(Q.multi)A[Q.k]=[];
+ el.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){
+  var n=+b.dataset.n;
+  if(Q.multi){b.classList.toggle('on');var x=A[Q.k].indexOf(n);if(x<0)A[Q.k].push(n);else A[Q.k].splice(x,1);}
+  else{A[Q.k]=n;b.classList.add('on');setTimeout(function(){i++;show();},180);}
+ });});
+ if(Q.multi)document.getElementById('go').addEventListener('click',function(){i++;show();});
+}
+function row(l,t,g){return '<div class="row"><b>'+l+'</b><span'+(g?' class="gap"':'')+'>'+t+'</span></div>';}
+function snap(){
+ var h=QS[5].o,have=[],not=[];
+ h.forEach(function(o,n){(A.have.indexOf(n)>=0?have:not).push(o[0].replace('I\'m','you\'re').replace(' me',' you'));});
+ [have,not].forEach(function(L){L.forEach(function(t,n){if(n)L[n]=t.charAt(0).toLowerCase()+t.slice(1);});});
+ var st=QS[3].o[A.stop],so=QS[4].o[A.some];
+ el.innerHTML='<div class="snap"><h4>Here\'s where you stand.</h4>'+
+  row('The business','You own it '+QS[0].o[A.own][1]+'. '+QS[1].o[A.fam][1]+'.')+
+  row('Your pay',QS[2].o[A.pay][1]+'.')+
+  row('If you can\'t work',st[1]+'.',st[2])+
+  row('Someday',so[1]+'.',so[2])+
+  row('In place',have.length?have.join(', ')+'.':'Nothing yet.',!have.length)+
+  (not.length?row('Not yet',not.join(', ')+'.',1):'')+
+  '<p class="end">Your advisor starts from this, so you never have to explain it twice.</p>'+
+  '<span class="btn">Pick a time that works</span><button class="again" id="again">Start over</button></div>';
+ document.getElementById('again').addEventListener('click',function(){i=0;A={};show();});
+}
+show();
+if(location.hash==='#test'){A={own:1,fam:0,pay:1,stop:2,some:3,have:[1]};i=QS.length;show();}
+})();
+</script>
+</body>
+</html>
